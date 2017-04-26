@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Login Hotspot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<style type="text/css">
+@font-face{
+	src: url("VarelaRound-Regular.ttf");
+	font-family: varela;
+}
+body{
+	font-family: varela;
+	margin: 0;
+	color: white;
+}
+.filter{
+	background: rgba(44, 50, 48, 0.7);
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: -99999;
+	position: fixed;
+}
+.form{
+	margin: 0 auto;
+	width: 30%;
+}
+.form-header{
+	background: #3498db;
+	padding: 15px 15px;
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+}
+.form-body{
+	padding-top: 5%;
+	padding-bottom: 5%;
+	border: 2px solid #cccce6;
+	background-color: white;
+}
+input[type=text],
+input[type=password]{
+	border-bottom: 2px solid #3498db;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	width: 70%;
+	margin: 0 auto;
+	display: block;
+	line-height: 30px;
+	background-color: white;
+	font-weight: bold;
+	font-size: 12px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	transition: all 0.5s;
+}
+input[type=text]:focus,
+input[type=password]:focus{
+	width: 74%;
+}
+input[type=submit]{
+	background: #3498DB;
+	border: 2px solid #3498db;
+	color: white;
+	width: 70%;
+	margin: 0 auto;
+	display: block;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	transition: all 0.5s;
+}
+input[type=submit]:hover{
+	background-color: transparent;
+	color: #3498db;
+}
+.error{
+	background: #FF2020;
+	width: 40%;
+	margin: 0 auto;
+	border-radius: 7px;
+	padding: 10px;
+	text-align: center;
+	color: #fff;
+	text-align: center;
+}
+@media screen and (max-width: 1000px){
+	.form{
+		width: 47%;
+	}
+	.error{
+		width: 60%;
+	}
+}
+@media screen and (max-width: 600px){
+	.form{
+		width: 80%;
+	}
+	.error{
+		width: 80%;
+	}
+}
+</style>
+
+</head>
+
+<body>
+<div class="filter"></div>
+$(if chap-id)
+	<form name="sendin" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+	
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+		document.sendin.submit();
+		return false;
+	    }
+	</script>
+		<form name="login" action="$(link-login-only)" method="post" style="margin-top: 7%" 
+					    $(if chap-id) onSubmit="return doLogin()" $(endif)>
+	<div class="form">
+	<center>LOGIN UNTUK MENIKMATI SERVIS DARI HOTSPOT<br><br></center>
+		<div class="form-header">SILAHKAN LOGIN</div>
+		<div class="form-body">
+				<input type="hidden" name="dst" value="$(link-orig)" />
+				<input type="hidden" name="popup" value="true" />
+					<input name="username" type="text" value="$(username)" placeholder="Username" /><br />
+					<input name="password" type="password" placeholder="Password" /></br />
+					<input type="submit" value="LOGIN" /><br />
+			<b><center style="text-transform: uppercase;color: black">Template Login Mikrotik<br>By : Yogi Prasetyawan</center></b>
+			</div>
+			<center>
+			<br />
+			<b style="text-transform: uppercase;">anda Tidak Punya Akun ? <br> <a style="color: #FF8080"href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">LOGIN GRATIS dISINI</a></div><br /></b></center>
+	</div>
+	$(if error)<br />
+	<div class="error">$(error)
+	</div>
+	$(endif)
+	</form>
+$(endif)
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+<script src="jquery.js"></script>
+<script src="jquery.backstretch.js"></script>
+<script>
+    $.backstretch([
+      "img/bg5.jpg",
+      "img/bg4.jpg",
+      "img/bg3.jpg"
+      ], {
+        fade: 750,
+        duration: 4000
+    });
+</script>
+</body>
+</html>
